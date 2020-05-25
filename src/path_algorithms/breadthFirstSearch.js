@@ -68,6 +68,6 @@ const getNeighbours = (node, nodes) => {
 	if (column > 0) neighbours.push(nodes[row][column - 1]);
 	if (column < nodes[0].length - 1) neighbours.push(nodes[row][column + 1]);
 	return neighbours.filter((neighbour) => {
-		return !neighbour.isVisited;
+		return !neighbour.isVisited && neighbour.type !== 'wall';
 	});
 };
