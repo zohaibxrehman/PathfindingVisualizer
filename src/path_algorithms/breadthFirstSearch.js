@@ -18,30 +18,44 @@ class Queue {
 
 export const breadthFirstSearch = (start, end, nodes) => {
 	const nodesCopy = nodes.slice();
-	solve(start, nodes);
-	return reConstructPath(start, end, nodesCopy);
+	const visitedNodes = solve(start, end, nodes);
+	return { visitedNodes: visitedNodes, path: reConstructPath(start, end, nodesCopy) };
 };
 
-// later implement with stop when found functionality
-const solve = (start, nodes) => {
+const solve = (start, end, nodes) => {
 	let q = new Queue();
 	q.enqueue(start);
+
+	let visitedNodes = [];
 
 	nodes[start.row][start.column].isVisited = true;
 	let node;
 	let neighbours;
+	let found = false;
 	while (!q.isEmpty()) {
 		node = q.dequeue();
 		neighbours = getNeighbours(node, nodes);
 
 		neighbours.forEach((neighbour) => {
 			if (!neighbour.isVisited) {
+				if (neighbour.row === end.row && neighbour.column === end.column) {
+					neighbour.isVisited = true;
+					neighbour.prev = node;
+					found = true;
+					return;
+				}
+				console.log('1');
 				q.enqueue(neighbour);
+				visitedNodes.push(neighbour);
 				neighbour.isVisited = true;
 				neighbour.prev = node;
 			}
 		});
+		if (found) {
+			break;
+		}
 	}
+	return visitedNodes;
 };
 
 const reConstructPath = (start, end, nodes) => {

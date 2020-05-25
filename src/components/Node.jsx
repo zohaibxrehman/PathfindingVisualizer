@@ -19,9 +19,9 @@ export class Node extends Component {
 		} else if (type === 'wall') {
 			style.background = '#004';
 		} else if (type === 'start') {
-			style.background = '#822';
+			style.background = '#E3341C';
 		} else if (type === 'end') {
-			style.background = '#282';
+			style.background = '#18E746';
 		}
 
 		return style;

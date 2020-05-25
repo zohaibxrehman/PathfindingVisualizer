@@ -60,13 +60,23 @@ export class Pathfinder extends Component {
 		const { nodes } = this.state;
 		const startNode = nodes[START_NODE_ROW][START_NODE_COL];
 		const endNode = nodes[END_NODE_ROW][END_NODE_COL];
-		const path = breadthFirstSearch(startNode, endNode, nodes);
-		for (let i = 0; i < path.length; i++) {
+		const { path, visitedNodes } = breadthFirstSearch(startNode, endNode, nodes);
+
+		let curr;
+		for (let i = 0; i < visitedNodes.length; i++) {
 			setTimeout(() => {
-				const node = path[i];
-				document.getElementById(`node_${node.row}_${node.column}`).className += ' shortest-path';
-			}, 50 * i);
+				curr = visitedNodes[i];
+				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node visited';
+			}, 10 * i);
 		}
+		setTimeout(() => {
+			for (let i = 0; i < path.length; i++) {
+				setTimeout(() => {
+					curr = path[i];
+					document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node shortest-path';
+				}, 50 * i);
+			}
+		}, 10 * visitedNodes.length);
 	}
 
 	reset() {
