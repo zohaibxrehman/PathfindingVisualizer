@@ -6,14 +6,16 @@ export class Form extends Component {
 		return {
 			background: '#f4f4',
 			padding: '10px'
-			//   whiteSpace: 'nowrap'
 		};
 	}
 
 	render() {
+		const { onClick } = this.props;
 		return (
 			<div style={this.getStyle()}>
-				<Button variant="primary">Visualize!</Button>{' '}
+				<span onClick={() => onClick()}>
+					<Button variant="primary">Visualize!</Button>{' '}
+				</span>
 			</div>
 		);
 	}

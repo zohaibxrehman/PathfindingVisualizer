@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
+import './animation.css';
 
 export class Node extends Component {
 	constructor() {
 		super();
 	}
-
-	// isTypeWall(){
-	//     return this.state.type === 'regular';
-	// }
-
-	// isTypeRegular(){
-	//     return this.state.type === 'wall';
-	// }
 
 	getStyle() {
 		const { type } = this.props;
@@ -40,7 +33,6 @@ export class Node extends Component {
 
 	render() {
 		const { row, column, type, onMouseDown, onMouseEnter, onMouseUp } = this.props;
-		// const nodeType = isTypeWall ? 'typeWall' : '';
 		return (
 			<td
 				id={`node_${row}_${column}`}

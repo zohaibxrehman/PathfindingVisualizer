@@ -3,7 +3,14 @@ import NavBar from './NavBar';
 import Board from './Board';
 import Form from './Form';
 
+import { breadthFirstSearch } from '../path_algorithms/breadthFirstSearch';
+
 import { Row, Col } from 'react-bootstrap';
+
+const START_NODE_ROW = 12;
+const START_NODE_COL = 8;
+const END_NODE_ROW = 12;
+const END_NODE_COL = 27;
 
 export class Pathfinder extends Component {
 	constructor() {
@@ -17,8 +24,8 @@ export class Pathfinder extends Component {
 
 	componentDidMount() {
 		let initialNodes = createNodes();
-		initialNodes[12][8].type = 'start';
-		initialNodes[12][27].type = 'end';
+		initialNodes[START_NODE_ROW][START_NODE_COL].type = 'start';
+		initialNodes[END_NODE_ROW][END_NODE_COL].type = 'end';
 		this.setState({ nodes: initialNodes });
 	}
 
@@ -52,6 +59,19 @@ export class Pathfinder extends Component {
 		this.setState({ isMouseDown: false });
 	}
 
+	visualize() {
+		const { nodes } = this.state;
+		const startNode = nodes[START_NODE_ROW][START_NODE_COL];
+		const endNode = nodes[END_NODE_ROW][END_NODE_COL];
+		const path = breadthFirstSearch(startNode, endNode, nodes);
+		for (let i = 0; i < path.length; i++) {
+			setTimeout(() => {
+				const node = path[i];
+				document.getElementById(`node_${node.row}_${node.column}`).className = 'shortest-path';
+			}, 50 * i);
+		}
+	}
+
 	render() {
 		const { nodes, isMouseDown } = this.state;
 		return (
@@ -68,7 +88,7 @@ export class Pathfinder extends Component {
 						/>
 					</Col>
 					<Col sm={4}>
-						<Form />
+						<Form onClick={() => this.visualize()} />
 					</Col>
 				</Row>
 			</div>
@@ -94,7 +114,9 @@ const createNodeObject = (row, column) => {
 	return {
 		row,
 		column,
-		type: 'regular'
+		type: 'regular',
+		isVisited: false,
+		prev: null
 	};
 };
 
