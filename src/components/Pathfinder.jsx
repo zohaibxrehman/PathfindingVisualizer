@@ -20,7 +20,6 @@ export class Pathfinder extends Component {
 		initialNodes[12][8].type = 'start';
 		initialNodes[12][27].type = 'end';
 		this.setState({ nodes: initialNodes });
-		console.log(this.props.nodes);
 	}
 
 	handleMouseDown(row, column) {
