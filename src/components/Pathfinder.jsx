@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
 import Board from './Board';
-import Form from './Form';
+import Customisation from './Customisation';
 
 import { breadthFirstSearch } from '../path_algorithms/breadthFirstSearch';
 
@@ -78,7 +78,7 @@ export class Pathfinder extends Component {
 			<div>
 				<NavBar />
 				<Row>
-					<Col sm={8}>
+					<Col lg={8}>
 						<Board
 							nodes={nodes}
 							isMouseDown={isMouseDown}
@@ -87,8 +87,8 @@ export class Pathfinder extends Component {
 							onMouseUp={() => this.handleMouseUp()}
 						/>
 					</Col>
-					<Col sm={4}>
-						<Form onClick={() => this.visualize()} />
+					<Col lg={4}>
+						<Customisation onClick={() => this.visualize()} />
 					</Col>
 				</Row>
 			</div>
@@ -100,9 +100,9 @@ export class Pathfinder extends Component {
 
 const createNodes = () => {
 	const nodes = [];
-	for (let row = 0; row < 25; row++) {
+	for (let row = 0; row < 27; row++) {
 		const rowNodes = [];
-		for (let column = 0; column < 35; column++) {
+		for (let column = 0; column < 37; column++) {
 			rowNodes.push(createNodeObject(row, column));
 		}
 		nodes.push(rowNodes);

@@ -4,8 +4,7 @@ import Node from './Node';
 export class Board extends Component {
 	getStyle() {
 		return {
-			background: '#f4f',
-			padding: '10px'
+			padding: '30px'
 		};
 	}
 
