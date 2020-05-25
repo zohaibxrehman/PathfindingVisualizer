@@ -2,53 +2,15 @@ import React, { Component } from 'react';
 import Node from './Node';
 
 export class Board extends Component {
-	constructor() {
-		super();
-		this.state = {
-			nodes: [],
-			isMouseDown: false
-		};
-	}
-
-	componentDidMount() {
-		let initialNodes = createNodes();
-		initialNodes[12][8].type = 'start';
-		initialNodes[12][27].type = 'end';
-		this.setState({ nodes: initialNodes });
-	}
-
-	getStyle = () => {
+	getStyle() {
 		return {
 			background: '#f4f',
 			padding: '10px'
 		};
-	};
-
-	handleMouseDown(row, column) {
-		const newNodes = this.state.nodes.slice();
-		newNodes[row][column].type = 'wall';
-		this.setState({ nodes: newNodes, isMouseDown: true });
 	}
-
-	handleMouseEnter(row, column) {
-		if (this.state.isMouseDown) {
-			const newNodes = this.state.nodes.slice();
-			newNodes[row][column].type = 'wall';
-			this.setState({ nodes: newNodes });
-		} else {
-			return;
-		}
-	}
-
-	handleMouseUp() {
-		this.setState({ isMouseDown: false });
-	}
-
-	handleMouse;
 
 	render() {
-		const { nodes, isMouseDown } = this.state;
-
+		const { nodes, isMouseDown, onMouseDown, onMouseEnter, onMouseUp } = this.props;
 		return (
 			<div style={this.getStyle()}>
 				<table>
@@ -64,9 +26,9 @@ export class Board extends Component {
 												row={row}
 												column={column}
 												type={type}
-												onMouseDown={(row, column) => this.handleMouseDown(row, column)}
-												onMouseEnter={(row, column) => this.handleMouseEnter(row, column)}
-												onMouseUp={() => this.handleMouseUp()}
+												onMouseDown={(row, column) => onMouseDown(row, column)}
+												onMouseEnter={(row, column) => onMouseEnter(row, column)}
+												onMouseUp={() => onMouseUp()}
 												// this.handleClick = this.handleClick.bind(this);
 											/>
 										);
@@ -87,26 +49,6 @@ const rowStyle = {
 	display: 'inline block',
 	padding: '0px',
 	margin: '0px'
-};
-
-const createNodes = () => {
-	const nodes = [];
-	for (let row = 0; row < 25; row++) {
-		const rowNodes = [];
-		for (let column = 0; column < 35; column++) {
-			rowNodes.push(createNodeObject(row, column));
-		}
-		nodes.push(rowNodes);
-	}
-	return nodes;
-};
-
-const createNodeObject = (row, column) => {
-	return {
-		row,
-		column,
-		type: 'regular'
-	};
 };
 
 export default Board;

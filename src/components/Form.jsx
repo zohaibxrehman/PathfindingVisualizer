@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
 export class Form extends Component {
-	getStyle = () => {
+	getStyle() {
 		return {
 			background: '#f4f4',
 			padding: '10px'
 			//   whiteSpace: 'nowrap'
 		};
-	};
+	}
 
 	render() {
 		return (
