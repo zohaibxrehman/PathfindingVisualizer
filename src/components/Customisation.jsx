@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 export class Customisation extends Component {
 	getStyle() {
 		return {
-			background: '#f4f4',
 			padding: '30px'
 		};
 	}
 
 	render() {
-		const { onClick } = this.props;
+		const { visualize, reset } = this.props;
 		return (
 			<div style={this.getStyle()}>
-				<span onClick={() => onClick()}>
-					<Button variant="primary">Visualize!</Button>{' '}
-				</span>
+				<Form>
+					<span onClick={() => visualize()}>
+						<Button variant="primary">Visualize!</Button>{' '}
+					</span>
+					<span onClick={() => reset()}>
+						<Button variant="primary">Reset</Button>{' '}
+					</span>
+				</Form>
 			</div>
 		);
 	}

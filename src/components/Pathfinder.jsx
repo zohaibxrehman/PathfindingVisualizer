@@ -23,10 +23,7 @@ export class Pathfinder extends Component {
 	}
 
 	componentDidMount() {
-		let initialNodes = createNodes();
-		initialNodes[START_NODE_ROW][START_NODE_COL].type = 'start';
-		initialNodes[END_NODE_ROW][END_NODE_COL].type = 'end';
-		this.setState({ nodes: initialNodes });
+		this.reset();
 	}
 
 	handleMouseDown(row, column) {
@@ -67,9 +64,17 @@ export class Pathfinder extends Component {
 		for (let i = 0; i < path.length; i++) {
 			setTimeout(() => {
 				const node = path[i];
-				document.getElementById(`node_${node.row}_${node.column}`).className = 'shortest-path';
+				document.getElementById(`node_${node.row}_${node.column}`).className += ' shortest-path';
 			}, 50 * i);
 		}
+	}
+
+	reset() {
+		let initialNodes = createNodes();
+		initialNodes[START_NODE_ROW][START_NODE_COL].type = 'start';
+		initialNodes[END_NODE_ROW][END_NODE_COL].type = 'end';
+		document.querySelectorAll('.node').forEach((node) => (node.className = 'node'));
+		this.setState({ nodes: initialNodes });
 	}
 
 	render() {
@@ -78,7 +83,7 @@ export class Pathfinder extends Component {
 			<div>
 				<NavBar />
 				<Row>
-					<Col lg={8}>
+					<Col lg={8} md={12}>
 						<Board
 							nodes={nodes}
 							isMouseDown={isMouseDown}
@@ -87,8 +92,8 @@ export class Pathfinder extends Component {
 							onMouseUp={() => this.handleMouseUp()}
 						/>
 					</Col>
-					<Col lg={4}>
-						<Customisation onClick={() => this.visualize()} />
+					<Col lg={4} md={12}>
+						<Customisation visualize={() => this.visualize()} reset={() => this.reset()} />
 					</Col>
 				</Row>
 			</div>

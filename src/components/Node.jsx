@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './animation.css';
 
 export class Node extends Component {
-	constructor() {
-		super();
-	}
-
 	getStyle() {
 		const { type } = this.props;
 		const style = {
@@ -36,6 +32,7 @@ export class Node extends Component {
 		return (
 			<td
 				id={`node_${row}_${column}`}
+				className="node"
 				style={this.getStyle(type)}
 				onMouseDown={() => onMouseDown(row, column)}
 				onMouseEnter={() => onMouseEnter(row, column)}

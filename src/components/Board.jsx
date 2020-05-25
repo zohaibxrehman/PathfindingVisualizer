@@ -9,7 +9,7 @@ export class Board extends Component {
 	}
 
 	render() {
-		const { nodes, isMouseDown, onMouseDown, onMouseEnter, onMouseUp } = this.props;
+		const { nodes, onMouseDown, onMouseEnter, onMouseUp } = this.props;
 		return (
 			<div style={this.getStyle()}>
 				<table>
