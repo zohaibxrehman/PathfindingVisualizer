@@ -4,7 +4,10 @@ import Node from './Node';
 export class Board extends Component {
 	getStyle() {
 		return {
-			padding: '30px'
+			padding: '30px',
+			backgroundColor: 'lightGray',
+			height: '815px',
+			float: 'left'
 		};
 	}
 

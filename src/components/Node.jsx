@@ -5,13 +5,11 @@ export class Node extends Component {
 	getStyle() {
 		const { type } = this.props;
 		const style = {
-			// borderRadius: '5px',
 			display: 'inline-block',
-			outline: '1px solid #737C8C',
-			height: '25px',
-			// margin: '1rem',
-			// position: 'relative',
-			width: '25px'
+			outline: '1px solid black',
+			height: '27px',
+			padding: '0px',
+			width: '27px'
 		};
 
 		if (type === 'regular') {

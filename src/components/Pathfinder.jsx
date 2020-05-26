@@ -7,10 +7,13 @@ import { breadthFirstSearch } from '../path_algorithms/breadthFirstSearch';
 
 import { Row, Col } from 'react-bootstrap';
 
+const TOTAL_ROWS = 27;
+const TOTAL_COLS = 45;
+
 const START_NODE_ROW = 12;
 const START_NODE_COL = 8;
 const END_NODE_ROW = 12;
-const END_NODE_COL = 27;
+const END_NODE_COL = 35;
 
 export class Pathfinder extends Component {
 	constructor() {
@@ -18,7 +21,8 @@ export class Pathfinder extends Component {
 		this.state = {
 			nodes: [],
 			isMouseDown: false,
-			mode: 'draw'
+			mode: 'draw',
+			algorithm: 'bfs'
 		};
 	}
 
@@ -56,6 +60,11 @@ export class Pathfinder extends Component {
 		this.setState({ isMouseDown: false });
 	}
 
+	changeAlgorithm(newAlg) {
+		this.setState({ algorithm: newAlg });
+		console.log(this.state.algorithm);
+	}
+
 	visualize() {
 		const { nodes } = this.state;
 		const startNode = nodes[START_NODE_ROW][START_NODE_COL];
@@ -67,16 +76,16 @@ export class Pathfinder extends Component {
 			setTimeout(() => {
 				curr = visitedNodes[i];
 				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node visited';
-			}, 10 * i);
+			}, 5 * i);
 		}
 		setTimeout(() => {
 			for (let i = 0; i < path.length; i++) {
 				setTimeout(() => {
 					curr = path[i];
 					document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node shortest-path';
-				}, 50 * i);
+				}, 30 * i);
 			}
-		}, 10 * visitedNodes.length);
+		}, 5 * visitedNodes.length);
 	}
 
 	reset() {
@@ -93,7 +102,7 @@ export class Pathfinder extends Component {
 			<div>
 				<NavBar />
 				<Row>
-					<Col lg={8} md={12}>
+					<Col lg={{ span: 8 }}>
 						<Board
 							nodes={nodes}
 							isMouseDown={isMouseDown}
@@ -102,8 +111,12 @@ export class Pathfinder extends Component {
 							onMouseUp={() => this.handleMouseUp()}
 						/>
 					</Col>
-					<Col lg={4} md={12}>
-						<Customisation visualize={() => this.visualize()} reset={() => this.reset()} />
+					<Col lg={{ span: 4, offset: 0 }}>
+						<Customisation
+							visualize={() => this.visualize()}
+							reset={() => this.reset()}
+							changeAlgorithm={(newAlg) => this.changeAlgorithm(newAlg)}
+						/>
 					</Col>
 				</Row>
 			</div>
@@ -115,9 +128,9 @@ export class Pathfinder extends Component {
 
 const createNodes = () => {
 	const nodes = [];
-	for (let row = 0; row < 27; row++) {
+	for (let row = 0; row < TOTAL_ROWS; row++) {
 		const rowNodes = [];
-		for (let column = 0; column < 37; column++) {
+		for (let column = 0; column < TOTAL_COLS; column++) {
 			rowNodes.push(createNodeObject(row, column));
 		}
 		nodes.push(rowNodes);

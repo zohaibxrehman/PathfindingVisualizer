@@ -13,15 +13,15 @@
 @keyframes stretch {
 	0% {
 		transform: scale(0.95);
-		background-color: cyan;
+		background-color: yellow;
 		border-radius: 35%;
 	}
 	50% {
-		background-color: blue;
+		background-color: darkorange;
 	}
 	100% {
 		transform: scale(1.2);
-		background-color: midnightblue;
+		background-color: orangered;
 	}
 }
 
@@ -39,16 +39,16 @@
 @keyframes spread {
 	0% {
 		transform: scale(0.6);
-		background-color: orangered;
+		background-color: cyan;
 	}
 
 	50% {
 		transform: scale(1.2);
-		background-color: yellow;
+		background-color: midnightblue;
 	}
 
 	100% {
 		transform: scale(1);
-		background-color: orange;
+		background-color: royalblue;
 	}
 }
