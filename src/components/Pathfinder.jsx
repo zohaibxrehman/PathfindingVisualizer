@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
 import Board from './Board';
-import Customisation from './Customisation';
+import Customisation from './Customisation/Customisation';
 
 import { breadthFirstSearch } from '../path_algorithms/breadthFirstSearch';
+import { simpleTerrain } from '../maze_algorithms/simpleTerrain';
 
 import { Row, Col } from 'react-bootstrap';
+
+const clonedeep = require('lodash/cloneDeep');
 
 const TOTAL_ROWS = 27;
 const TOTAL_COLS = 45;
@@ -23,6 +26,7 @@ export class Pathfinder extends Component {
 			isMouseDown: false,
 			mode: 'draw',
 			algorithm: 'bfs'
+			// maze: 'draw'
 		};
 	}
 
@@ -62,7 +66,31 @@ export class Pathfinder extends Component {
 
 	changeAlgorithm(newAlg) {
 		this.setState({ algorithm: newAlg });
-		console.log(this.state.algorithm);
+		// console.log(this.state.algorithm);
+	}
+
+	// FIX!!
+	changeMaze(newMaze) {
+		if (newMaze === 'simple') {
+			// const nodesCopy = clonedeep(this.state.nodes);
+			const nodesCopy = this.state.nodes.slice();
+			console.table(nodesCopy)
+			const { newNodes, drawnNodes } = simpleTerrain(nodesCopy);
+			console.table(newNodes);
+			let curr;
+			
+			console.table(drawnNodes);
+			for (let i = 0; i < drawnNodes.length; i++) {
+				setTimeout(() => {
+					curr = drawnNodes[i];
+					// console.log(curr);
+					document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node walls';
+				}, i);
+			}
+			// this.setState({ nodes: newNodes });
+		}
+
+		// this.setState({ maze: newMaze });
 	}
 
 	visualize() {
@@ -102,7 +130,7 @@ export class Pathfinder extends Component {
 			<div>
 				<NavBar />
 				<Row>
-					<Col lg={{ span: 8 }}>
+					<Col lg={8}>
 						<Board
 							nodes={nodes}
 							isMouseDown={isMouseDown}
@@ -111,11 +139,12 @@ export class Pathfinder extends Component {
 							onMouseUp={() => this.handleMouseUp()}
 						/>
 					</Col>
-					<Col lg={{ span: 4, offset: 0 }}>
+					<Col lg={4}>
 						<Customisation
 							visualize={() => this.visualize()}
 							reset={() => this.reset()}
 							changeAlgorithm={(newAlg) => this.changeAlgorithm(newAlg)}
+							changeMaze={(newMaze) => this.changeMaze(newMaze)}
 						/>
 					</Col>
 				</Row>

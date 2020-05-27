@@ -2,24 +2,15 @@ import React, { Component } from 'react';
 import Node from './Node';
 
 export class Board extends Component {
-	getStyle() {
-		return {
-			padding: '30px',
-			backgroundColor: 'lightGray',
-			height: '815px',
-			float: 'left'
-		};
-	}
-
 	render() {
 		const { nodes, onMouseDown, onMouseEnter, onMouseUp } = this.props;
 		return (
-			<div style={this.getStyle()}>
-				<table>
+			<div style={divStyle}>
+				<table style={tableStyle}>
 					<tbody>
 						{nodes.map((rowNodes, rowId) => {
 							return (
-								<tr key={rowId} style={rowStyle}>
+								<tr key={rowId}>
 									{rowNodes.map((node, nodeId) => {
 										const { row, column, type } = node;
 										return (
@@ -31,7 +22,6 @@ export class Board extends Component {
 												onMouseDown={(row, column) => onMouseDown(row, column)}
 												onMouseEnter={(row, column) => onMouseEnter(row, column)}
 												onMouseUp={() => onMouseUp()}
-												// this.handleClick = this.handleClick.bind(this);
 											/>
 										);
 									})}
@@ -46,7 +36,14 @@ export class Board extends Component {
 }
 
 // Helper Functions:
-const rowStyle = {
+const divStyle = {
+	padding: '30px',
+	backgroundColor: 'lightGray',
+	height: '815px',
+	float: 'left'
+};
+
+const tableStyle = {
 	whiteSpace: 'nowrap', // makes table unbreakable
 	display: 'inline block',
 	padding: '0px',
