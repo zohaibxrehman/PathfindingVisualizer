@@ -8,7 +8,7 @@ import { simpleTerrain } from '../maze_algorithms/simpleTerrain';
 
 import { Row, Col } from 'react-bootstrap';
 
-const clonedeep = require('lodash/cloneDeep');
+// const clonedeep = require('lodash/cloneDeep');
 
 const TOTAL_ROWS = 27;
 const TOTAL_COLS = 45;
