@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import NavBar from './NavBar';
 import Board from './Board';
 import Customisation from './Customisation/Customisation';
-
 import { breadthFirstSearch } from '../path_algorithms/breadthFirstSearch';
-import { simpleTerrain } from '../maze_algorithms/simpleTerrain';
+import { MazeFacade } from '../maze_algorithms/MazeFacade';
 
 import { Row, Col } from 'react-bootstrap';
 
@@ -71,26 +70,33 @@ export class Pathfinder extends Component {
 
 	// FIX!!
 	changeMaze(newMaze) {
-		if (newMaze === 'simple') {
+		// this.reset();
+		const nodesCopy = this.state.nodes.slice();
+
+		if (newMaze === 'draw') {
+			return;
+		} else if (newMaze === 'simpleTerrain') {
 			// const nodesCopy = clonedeep(this.state.nodes);
-			const nodesCopy = this.state.nodes.slice();
-			console.table(nodesCopy)
-			const { newNodes, drawnNodes } = simpleTerrain(nodesCopy);
-			console.table(newNodes);
-			let curr;
-			
-			console.table(drawnNodes);
-			for (let i = 0; i < drawnNodes.length; i++) {
-				setTimeout(() => {
-					curr = drawnNodes[i];
-					// console.log(curr);
-					document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node walls';
-				}, i);
-			}
-			// this.setState({ nodes: newNodes });
+			var { newNodes, drawnNodes } = MazeFacade.simpleTerrain(nodesCopy, TOTAL_ROWS - 1, TOTAL_COLS - 1);
+		} else if (newMaze === 'recursiveDivision') {
+			var { newNodes, drawnNodes } = MazeFacade.recursiveDivision(
+				nodesCopy,
+				0,
+				0,
+				TOTAL_ROWS - 1,
+				TOTAL_COLS - 1,
+				'horizontal'
+			);
 		}
 
-		// this.setState({ maze: newMaze });
+		let curr;
+		for (let i = 0; i < drawnNodes.length; i++) {
+			setTimeout(() => {
+				curr = drawnNodes[i];
+				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node walls';
+			}, 6 * i);
+		}
+		// this.setState({ nodes: newNodes });
 	}
 
 	visualize() {

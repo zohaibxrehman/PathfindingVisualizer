@@ -8,13 +8,13 @@ export class MazePicker extends Component {
 			<div>
 				<FormGroup>
 					<Card.Title style={{ textAlign: 'left' }}>Now, Select a Maze</Card.Title>
-					<Tab.Container id="list-group-tabs-example" defaultActiveKey="#dummy0">
+					<Tab.Container id="list-group-tabs-example" defaultActiveKey="#draw">
 						<Row>
 							<Col sm={4}>
 								<ListGroup>
 									<ListGroup.Item
 										action
-										href="#dummy0"
+										href="#draw"
 										onClick={() => {
 											changeMaze('draw');
 										}}
@@ -23,18 +23,18 @@ export class MazePicker extends Component {
 									</ListGroup.Item>
 									<ListGroup.Item
 										action
-										href="#dummy1"
+										href="#simpleTerrain"
 										onClick={() => {
-											changeMaze('simple');
+											changeMaze('simpleTerrain');
 										}}
 									>
 										Simple Terrain
 									</ListGroup.Item>
 									<ListGroup.Item
 										action
-										href="#dumm2"
+										href="#recursiveDivision"
 										onClick={() => {
-											changeMaze('recursize');
+											changeMaze('recursiveDivision');
 										}}
 									>
 										Recursive Maze
@@ -43,15 +43,15 @@ export class MazePicker extends Component {
 							</Col>
 							<Col sm={8}>
 								<Tab.Content>
-									<Tab.Pane eventKey="#dummy0">
+									<Tab.Pane eventKey="#draw">
 										Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus maiores
 										saepe assumenda.
 									</Tab.Pane>
-									<Tab.Pane eventKey="#dummy1">
+									<Tab.Pane eventKey="#simpleTerrain">
 										Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus maiores
 										saepe assumenda.
 									</Tab.Pane>
-									<Tab.Pane eventKey="#dumm2">
+									<Tab.Pane eventKey="#recursiveDivision">
 										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
 										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
 									</Tab.Pane>
