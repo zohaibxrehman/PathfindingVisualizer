@@ -24,8 +24,8 @@ export class Pathfinder extends Component {
 			nodes: [],
 			isMouseDown: false,
 			mode: 'draw',
-			algorithm: 'bfs'
-			// maze: 'draw'
+			algorithm: 'bfs',
+			maze: 'draw'
 		};
 	}
 
@@ -65,20 +65,23 @@ export class Pathfinder extends Component {
 
 	changeAlgorithm(newAlg) {
 		this.setState({ algorithm: newAlg });
-		// console.log(this.state.algorithm);
+	}
+
+	changeMaze(newMaze) {
+		this.setState({ maze: newMaze });
 	}
 
 	// FIX!!
-	changeMaze(newMaze) {
+	drawMaze() {
 		// this.reset();
 		const nodesCopy = this.state.nodes.slice();
-
-		if (newMaze === 'draw') {
+		const { maze } = this.state;
+		if (maze === 'draw') {
 			return;
-		} else if (newMaze === 'simpleTerrain') {
+		} else if (maze === 'simpleTerrain') {
 			// const nodesCopy = clonedeep(this.state.nodes);
 			var { newNodes, drawnNodes } = MazeFacade.simpleTerrain(nodesCopy, TOTAL_ROWS - 1, TOTAL_COLS - 1);
-		} else if (newMaze === 'recursiveDivision') {
+		} else if (maze === 'recursiveDivision') {
 			var { newNodes, drawnNodes } = MazeFacade.recursiveDivision(
 				nodesCopy,
 				0,
@@ -97,9 +100,10 @@ export class Pathfinder extends Component {
 			}, 6 * i);
 		}
 		// this.setState({ nodes: newNodes });
+		return 6 * drawnNodes.length;
 	}
 
-	visualize() {
+	drawSearchPath() {
 		const { nodes } = this.state;
 		const startNode = nodes[START_NODE_ROW][START_NODE_COL];
 		const endNode = nodes[END_NODE_ROW][END_NODE_COL];
@@ -128,6 +132,12 @@ export class Pathfinder extends Component {
 		initialNodes[END_NODE_ROW][END_NODE_COL].type = 'end';
 		document.querySelectorAll('.node').forEach((node) => (node.className = 'node'));
 		this.setState({ nodes: initialNodes });
+	}
+
+	visualize() {
+		// this.reset();
+		const waitTime = this.drawMaze();
+		setTimeout(() => this.drawSearchPath(), waitTime + 500);
 	}
 
 	render() {

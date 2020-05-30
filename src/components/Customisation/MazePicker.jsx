@@ -37,7 +37,7 @@ export class MazePicker extends Component {
 											changeMaze('recursiveDivision');
 										}}
 									>
-										Recursive Maze
+										Recursive Division
 									</ListGroup.Item>
 								</ListGroup>
 							</Col>
