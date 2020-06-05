@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import NavBar from './NavBar';
 import Board from './Board';
 import Customisation from './Customisation/Customisation';
-import { breadthFirstSearch } from '../path_algorithms/breadthFirstSearch';
+
 import { MazeFacade } from '../maze_algorithms/MazeFacade';
+import { SearchFacade } from '../path_algorithms/SearchFacade';
 
 import { Row, Col } from 'react-bootstrap';
 
@@ -76,7 +77,7 @@ export class Pathfinder extends Component {
 		// this.reset();
 		const nodesCopy = this.state.nodes.slice();
 		const { maze } = this.state;
-		let mazeFacade = new MazeFacade(nodesCopy, 0, 0, TOTAL_ROWS - 1, TOTAL_COLS - 1, 'horizontal');
+		const mazeFacade = new MazeFacade(nodesCopy, 0, 0, TOTAL_ROWS - 1, TOTAL_COLS - 1, 'horizontal');
 		if (maze === 'draw') {
 			return;
 		}
@@ -101,7 +102,8 @@ export class Pathfinder extends Component {
 		const { nodes } = this.state;
 		const startNode = nodes[START_NODE_ROW][START_NODE_COL];
 		const endNode = nodes[END_NODE_ROW][END_NODE_COL];
-		const { path, visitedNodes } = breadthFirstSearch(startNode, endNode, nodes);
+		const searchFacade = new SearchFacade(startNode, endNode, nodes);
+		const { path, visitedNodes } = searchFacade.breadthFirstSearch(startNode, endNode, nodes);
 
 		let curr;
 		for (let i = 0; i < visitedNodes.length; i++) {
