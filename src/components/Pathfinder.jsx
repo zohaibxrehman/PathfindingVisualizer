@@ -76,24 +76,16 @@ export class Pathfinder extends Component {
 		// this.reset();
 		const nodesCopy = this.state.nodes.slice();
 		const { maze } = this.state;
+		let mazeFacade = new MazeFacade(nodesCopy, 0, 0, TOTAL_ROWS - 1, TOTAL_COLS - 1, 'horizontal');
 		if (maze === 'draw') {
 			return;
-		} else if (maze === 'simpleTerrain') {
-			// const nodesCopy = clonedeep(this.state.nodes);
-			var { newNodes, drawnNodes } = MazeFacade.simpleTerrain(nodesCopy, TOTAL_ROWS - 1, TOTAL_COLS - 1);
-		} else if (maze === 'recursiveDivision') {
-			var { newNodes, drawnNodes } = MazeFacade.recursiveDivision(
-				nodesCopy,
-				0,
-				0,
-				TOTAL_ROWS - 1,
-				TOTAL_COLS - 1,
-				'horizontal'
-			);
-		} else if (maze === 'flappyBirdGrid') {
-			var { newNodes, drawnNodes } = MazeFacade.flappyBirdGrid(nodesCopy, TOTAL_ROWS - 1, TOTAL_COLS - 1);
 		}
-
+		var { newNodes, drawnNodes } =
+			maze === 'simpleTerrain'
+				? mazeFacade.simpleTerrain()
+				: maze === 'recursiveDivision'
+					? mazeFacade.recursiveDivision()
+					: maze === 'flappyBirdGrid' ? mazeFacade.flappyBirdGrid() : {};
 		let curr;
 		for (let i = 0; i < drawnNodes.length; i++) {
 			setTimeout(() => {
