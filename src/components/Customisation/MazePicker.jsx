@@ -39,6 +39,15 @@ export class MazePicker extends Component {
 									>
 										Recursive Division
 									</ListGroup.Item>
+									<ListGroup.Item
+										action
+										href="#flappyBirdGrid"
+										onClick={() => {
+											changeMaze('flappyBirdGrid');
+										}}
+									>
+										Flappy Bird Grid
+									</ListGroup.Item>
 								</ListGroup>
 							</Col>
 							<Col sm={8}>
@@ -52,6 +61,10 @@ export class MazePicker extends Component {
 										saepe assumenda.
 									</Tab.Pane>
 									<Tab.Pane eventKey="#recursiveDivision">
+										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
+										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
+									</Tab.Pane>
+									<Tab.Pane eventKey="#flappyBirdGrid">
 										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
 										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
 									</Tab.Pane>

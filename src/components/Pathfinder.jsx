@@ -90,6 +90,8 @@ export class Pathfinder extends Component {
 				TOTAL_COLS - 1,
 				'horizontal'
 			);
+		} else if (maze === 'flappyBirdGrid') {
+			var { newNodes, drawnNodes } = MazeFacade.flappyBirdGrid(nodesCopy, TOTAL_ROWS - 1, TOTAL_COLS - 1);
 		}
 
 		let curr;
