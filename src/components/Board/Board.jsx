@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Node from '../Node/Node';
 
+import styles from './Board.module.css';
+
 export class Board extends Component {
 	render() {
-		const { nodes, onMouseDown, onMouseEnter, onMouseUp } = this.props;
+		const { nodes, onMouseDown, onMouseEnter } = this.props;
 		return (
-			<div style={divStyle}>
-				<table style={tableStyle}>
+			<div className={styles.tableWrapper}>
+				<table className={styles.tableStyle}>
 					<tbody>
 						{nodes.map((rowNodes, rowId) => {
 							return (
@@ -33,20 +35,5 @@ export class Board extends Component {
 		);
 	}
 }
-
-// Helper Functions:
-const divStyle = {
-	padding: '30px',
-	backgroundColor: 'lightGray',
-	height: '815px',
-	float: 'left'
-};
-
-const tableStyle = {
-	whiteSpace: 'nowrap', // makes table unbreakable
-	display: 'inline block',
-	padding: '0px',
-	margin: '0px'
-};
 
 export default Board;

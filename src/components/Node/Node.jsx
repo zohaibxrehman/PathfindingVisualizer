@@ -32,7 +32,7 @@ export class Node extends Component {
 	}
 
 	render() {
-		const { row, column, type, onMouseDown, onMouseEnter, onMouseUp } = this.props;
+		const { row, column, type, onMouseDown, onMouseEnter } = this.props;
 		const styleClasses = this.getClass();
 		return (
 			<td

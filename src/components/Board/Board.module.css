@@ -1,0 +1,13 @@
+.tableWrapper {
+	padding: 30px;
+	background-color: lightGray;
+	height: 815px;
+	float: left;
+}
+
+.tableStyle {
+	white-space: nowrap;
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+}
