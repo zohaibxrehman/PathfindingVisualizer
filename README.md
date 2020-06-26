@@ -1,4 +1,4 @@
-## Pathfinding and Maze Generation
+## Pathfinding and Maze Generation Visualizer
 
 A react web app for visualizing pathfinding algorithms and maze generation algorithms for educational purposes. 
 
