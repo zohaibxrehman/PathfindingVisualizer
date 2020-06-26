@@ -53,21 +53,16 @@ export class MazePicker extends Component {
 							<Col sm={8}>
 								<Tab.Content>
 									<Tab.Pane eventKey="#draw">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus maiores
-										saepe assumenda.
+										Draw your own walls on the grid and the search algorithm will find its way
+										around it!
 									</Tab.Pane>
 									<Tab.Pane eventKey="#simpleTerrain">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus maiores
-										saepe assumenda.
+										Randomized terrain covering about one-third of all nodes on the grid.
 									</Tab.Pane>
 									<Tab.Pane eventKey="#recursiveDivision">
-										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
-										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
+										A maze will be generated using a divide and conquer approach.
 									</Tab.Pane>
-									<Tab.Pane eventKey="#flappyBirdGrid">
-										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
-										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
-									</Tab.Pane>
+									<Tab.Pane eventKey="#flappyBirdGrid">Possibly, no explanation needed!</Tab.Pane>
 								</Tab.Content>
 							</Col>
 						</Row>

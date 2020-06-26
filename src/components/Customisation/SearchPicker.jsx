@@ -44,8 +44,9 @@ export class SearchPicker extends Component {
 							<Col sm={8}>
 								<Tab.Content>
 									<Tab.Pane eventKey="#bfs">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus maiores
-										saepe assumenda.
+										BFS is a traversing algorithm where you should start from a selected node and
+										traverse the graph layerwise thus exploring the neighbour nodes.{' '}
+										<em>Shortest path is guarenteed!</em>
 									</Tab.Pane>
 									<Tab.Pane eventKey="#dijkstra">
 										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi

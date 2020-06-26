@@ -136,7 +136,7 @@ export class Pathfinder extends Component {
 
 	visualize() {
 		this.setState({ buttonDisable: true });
-		this.reset();
+		// this.reset();
 		setTimeout(() => {
 			const waitTime = this.drawMaze();
 			setTimeout(() => {
