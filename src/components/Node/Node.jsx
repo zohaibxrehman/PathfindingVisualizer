@@ -3,11 +3,10 @@ import './animation.css';
 
 export class Node extends Component {
 	shouldComponentUpdate(nextProps, nextState) {
-		return this.props !== nextProps;
+		return this.props.type !== nextProps.type;
 	}
 
 	getStyle() {
-		const { type } = this.props;
 		const style = {
 			display: 'inline-block',
 			outline: '1px solid black',
