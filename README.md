@@ -2,7 +2,7 @@
 
 A react web app for visualizing pathfinding algorithms and maze generation algorithms for educational purposes. 
 
-Below is a demo of recursive division algorithm for generating the maze. (Divide and Conquer approach)
+Below is a demo of recursive division algorithm(Divide and Conquer approach) for generating a maze with Breadth First Search to find the shortest path between the points.
 
 ![](https://i.imgur.com/WlBPpRH.gif)
 
