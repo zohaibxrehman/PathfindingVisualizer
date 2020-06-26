@@ -19,7 +19,7 @@ export class SearchPicker extends Component {
 											changeAlgorithm('astar');
 										}}
 									>
-										A*
+										A* Search
 									</ListGroup.Item>
 									<ListGroup.Item
 										action
