@@ -1,3 +1,15 @@
+.regular {
+	background-color: #fff;
+}
+
+.start {
+	background-color: #e3341c;
+}
+
+.end {
+	background-color: #18e746;
+}
+
 .shortest-path {
 	background-color: blue;
 	animation-name: stretch;

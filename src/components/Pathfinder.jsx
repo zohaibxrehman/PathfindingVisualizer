@@ -91,7 +91,7 @@ export class Pathfinder extends Component {
 		for (let i = 0; i < drawnNodes.length; i++) {
 			setTimeout(() => {
 				curr = drawnNodes[i];
-				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node walls';
+				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'walls';
 			}, 6 * i);
 		}
 		// this.setState({ nodes: newNodes });
@@ -109,14 +109,14 @@ export class Pathfinder extends Component {
 		for (let i = 0; i < visitedNodes.length; i++) {
 			setTimeout(() => {
 				curr = visitedNodes[i];
-				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node visited';
+				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'visited';
 			}, 5 * i);
 		}
 		setTimeout(() => {
 			for (let i = 0; i < path.length; i++) {
 				setTimeout(() => {
 					curr = path[i];
-					document.getElementById(`node_${curr.row}_${curr.column}`).className = 'node shortest-path';
+					document.getElementById(`node_${curr.row}_${curr.column}`).className = 'shortest-path';
 				}, 30 * i);
 			}
 		}, 5 * visitedNodes.length);
@@ -124,9 +124,14 @@ export class Pathfinder extends Component {
 
 	reset() {
 		let initialNodes = createNodes();
+		initialNodes.forEach((node) => (node.type = 'regular'));
+		document.querySelectorAll("[id^='node']").forEach((node) => {
+			if (node.className === 'walls' || node.className === 'shortest-path' || node.className === 'visited') {
+				node.className = 'regular';
+			}
+		});
 		initialNodes[START_NODE_ROW][START_NODE_COL].type = 'start';
 		initialNodes[END_NODE_ROW][END_NODE_COL].type = 'end';
-		document.querySelectorAll('.node').forEach((node) => (node.className = 'node'));
 		this.setState({ nodes: initialNodes });
 	}
 
