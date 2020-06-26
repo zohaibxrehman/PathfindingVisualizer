@@ -27,7 +27,7 @@ export class Pathfinder extends Component {
 			mode: 'draw',
 			algorithm: 'bfs',
 			maze: 'draw',
-			buttonDisable: 'false'
+			buttonDisable: false
 		};
 	}
 
@@ -142,16 +142,15 @@ export class Pathfinder extends Component {
 			const waitTime = this.drawMaze();
 			setTimeout(() => {
 				this.drawSearchPath();
+				setTimeout(() => {
+					this.setState({ buttonDisable: false });
+				}, 6000);
 			}, waitTime + 500);
-		}, 2000);
-
-		setTimeout(() => {
-			this.setState({ buttonDisable: false });
-		}, 1500);
+		}, 1100);
 	}
 
 	render() {
-		const { nodes, isMouseDown } = this.state;
+		const { nodes, isMouseDown, buttonDisable } = this.state;
 		return (
 			<div onMouseUp={() => this.handleMouseUp()}>
 				<NavBar />
@@ -166,6 +165,7 @@ export class Pathfinder extends Component {
 					</Col>
 					<Col lg={4}>
 						<Customisation
+							buttonDisable={buttonDisable}
 							visualize={() => this.visualize()}
 							reset={() => this.reset()}
 							changeAlgorithm={(newAlg) => this.changeAlgorithm(newAlg)}

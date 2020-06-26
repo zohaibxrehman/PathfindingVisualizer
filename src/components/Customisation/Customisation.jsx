@@ -5,7 +5,7 @@ import MazePicker from './MazePicker';
 
 export class Customisation extends Component {
 	render() {
-		const { visualize, reset, changeAlgorithm, changeMaze } = this.props;
+		const { visualize, reset, changeAlgorithm, changeMaze, buttonDisable } = this.props;
 		return (
 			<Form>
 				<Card bg="light" text="dark" style={{ height: '815px' }}>
@@ -14,10 +14,15 @@ export class Customisation extends Component {
 						<SearchPicker changeAlgorithm={(newAlg) => changeAlgorithm(newAlg)} />
 						<MazePicker changeMaze={(newMaze) => changeMaze(newMaze)} />
 						<FormGroup style={{ float: 'left' }}>
-							<Button onClick={() => visualize()} variant="primary" size="lg">
+							<Button onClick={() => visualize()} variant="primary" size="lg" disabled={buttonDisable}>
 								Visualize!
 							</Button>{' '}
-							<Button onClick={() => reset()} variant="outline-primary" size="lg">
+							<Button
+								onClick={() => reset()}
+								variant="outline-primary"
+								size="lg"
+								disabled={buttonDisable}
+							>
 								Reset
 							</Button>{' '}
 						</FormGroup>
