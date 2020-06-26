@@ -1,4 +1,6 @@
-React web app for visualizing pathfinding algorithms and maze generation algorithms.
+## Pathfinding and Maze Generation
+
+A react web app for visualizing pathfinding algorithms and maze generation algorithms for educational purposes. 
 
 Below is a demo of recursive division algorithm for generating the maze. (Divide and Conquer approach)
 
@@ -20,7 +22,7 @@ Install create-react-app npm package globally. This will help to easily run the 
 npm install -g create-react-app
 ```
 
-## Install dependencies and run
+### Install dependencies and run
 
 Clone the project onto your local machine.
 
