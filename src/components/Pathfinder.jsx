@@ -8,8 +8,6 @@ import { SearchFacade } from '../path_algorithms/SearchFacade';
 
 import { Row, Col } from 'react-bootstrap';
 
-// const clonedeep = require('lodash/cloneDeep');
-
 const TOTAL_ROWS = 27;
 const TOTAL_COLS = 45;
 

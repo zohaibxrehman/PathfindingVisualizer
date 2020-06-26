@@ -14,21 +14,30 @@ export class SearchPicker extends Component {
 								<ListGroup>
 									<ListGroup.Item
 										action
+										href="#astar"
+										onClick={() => {
+											changeAlgorithm('astar');
+										}}
+									>
+										A*
+									</ListGroup.Item>
+									<ListGroup.Item
+										action
+										href="#dijkstra"
+										onClick={() => {
+											changeAlgorithm('dijkstra');
+										}}
+									>
+										Dijkstra
+									</ListGroup.Item>
+									<ListGroup.Item
+										action
 										href="#bfs"
 										onClick={() => {
 											changeAlgorithm('bfs');
 										}}
 									>
 										Breadth First Search
-									</ListGroup.Item>
-									<ListGroup.Item
-										action
-										href="#dfs"
-										onClick={() => {
-											changeAlgorithm('dfs');
-										}}
-									>
-										Depth First Search
 									</ListGroup.Item>
 								</ListGroup>
 							</Col>
@@ -38,7 +47,11 @@ export class SearchPicker extends Component {
 										Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni accusamus maiores
 										saepe assumenda.
 									</Tab.Pane>
-									<Tab.Pane eventKey="#dfs">
+									<Tab.Pane eventKey="#dijkstra">
+										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
+										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
+									</Tab.Pane>
+									<Tab.Pane eventKey="#astar">
 										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
 										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
 									</Tab.Pane>
