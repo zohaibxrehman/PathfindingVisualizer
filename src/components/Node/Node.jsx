@@ -41,7 +41,6 @@ export class Node extends Component {
 				style={this.getStyle(type)}
 				onMouseDown={() => onMouseDown(row, column)}
 				onMouseEnter={() => onMouseEnter(row, column)}
-				onMouseUp={() => onMouseUp()}
 			/>
 		);
 	}

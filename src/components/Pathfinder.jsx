@@ -153,7 +153,7 @@ export class Pathfinder extends Component {
 	render() {
 		const { nodes, isMouseDown } = this.state;
 		return (
-			<div>
+			<div onMouseUp={() => this.handleMouseUp()}>
 				<NavBar />
 				<Row>
 					<Col lg={8}>
@@ -162,7 +162,6 @@ export class Pathfinder extends Component {
 							isMouseDown={isMouseDown}
 							onMouseDown={(row, column) => this.handleMouseDown(row, column)}
 							onMouseEnter={(row, column) => this.handleMouseEnter(row, column)}
-							onMouseUp={() => this.handleMouseUp()}
 						/>
 					</Col>
 					<Col lg={4}>

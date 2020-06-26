@@ -21,7 +21,6 @@ export class Board extends Component {
 												type={type}
 												onMouseDown={(row, column) => onMouseDown(row, column)}
 												onMouseEnter={(row, column) => onMouseEnter(row, column)}
-												onMouseUp={() => onMouseUp()}
 											/>
 										);
 									})}
