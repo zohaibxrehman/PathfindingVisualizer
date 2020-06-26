@@ -26,7 +26,8 @@ export class Pathfinder extends Component {
 			isMouseDown: false,
 			mode: 'draw',
 			algorithm: 'bfs',
-			maze: 'draw'
+			maze: 'draw',
+			buttonDisable: 'false'
 		};
 	}
 
@@ -94,7 +95,6 @@ export class Pathfinder extends Component {
 				document.getElementById(`node_${curr.row}_${curr.column}`).className = 'walls';
 			}, 6 * i);
 		}
-		// this.setState({ nodes: newNodes });
 		return 6 * drawnNodes.length;
 	}
 
@@ -136,9 +136,18 @@ export class Pathfinder extends Component {
 	}
 
 	visualize() {
-		// this.reset();
-		const waitTime = this.drawMaze();
-		setTimeout(() => this.drawSearchPath(), waitTime + 500);
+		this.setState({ buttonDisable: true });
+		this.reset();
+		setTimeout(() => {
+			const waitTime = this.drawMaze();
+			setTimeout(() => {
+				this.drawSearchPath();
+			}, waitTime + 500);
+		}, 2000);
+
+		setTimeout(() => {
+			this.setState({ buttonDisable: false });
+		}, 1500);
 	}
 
 	render() {
