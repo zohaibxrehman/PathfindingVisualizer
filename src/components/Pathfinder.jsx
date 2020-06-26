@@ -120,6 +120,7 @@ export class Pathfinder extends Component {
 				}, 30 * i);
 			}
 		}, 5 * visitedNodes.length);
+		return 5 * visitedNodes.length + 30 * path.length;
 	}
 
 	reset() {
@@ -141,10 +142,10 @@ export class Pathfinder extends Component {
 		setTimeout(() => {
 			const waitTime = this.drawMaze();
 			setTimeout(() => {
-				this.drawSearchPath();
+				const waitTime2 = this.drawSearchPath();
 				setTimeout(() => {
 					this.setState({ buttonDisable: false });
-				}, 6000);
+				}, waitTime2 + 200);
 			}, waitTime + 500);
 		}, 1100);
 	}
