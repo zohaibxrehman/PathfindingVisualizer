@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NavBar from './NavBar';
-import Board from './Board';
+import NavBar from './NavBar/NavBar';
+import Board from './Board/Board';
 import Customisation from './Customisation/Customisation';
 
 import { MazeFacade } from '../maze_algorithms/MazeFacade';
@@ -185,7 +185,8 @@ const createNodeObject = (row, column) => {
 		column,
 		type: 'regular',
 		isVisited: false,
-		prev: null
+		prev: null,
+		dist: Infinity
 	};
 };
 
