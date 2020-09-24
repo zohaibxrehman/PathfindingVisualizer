@@ -25,7 +25,8 @@ export class Pathfinder extends Component {
 			mode: 'draw',
 			algorithm: 'bfs',
 			maze: 'draw',
-			buttonDisable: false
+			buttonDisable: false,
+			clearedScreen: true
 		};
 	}
 
@@ -131,11 +132,14 @@ export class Pathfinder extends Component {
 		});
 		initialNodes[START_NODE_ROW][START_NODE_COL].type = 'start';
 		initialNodes[END_NODE_ROW][END_NODE_COL].type = 'end';
-		this.setState({ nodes: initialNodes });
+		this.setState({ nodes: initialNodes, clearedScreen: true });
 	}
 
 	visualize() {
-		this.setState({ buttonDisable: true });
+		if (!this.state.clearedScreen) {
+			return;
+		}
+		this.setState({ buttonDisable: true, clearedScreen: false });
 		// this.reset();
 		setTimeout(() => {
 			const waitTime = this.drawMaze();
