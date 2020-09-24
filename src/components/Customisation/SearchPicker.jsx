@@ -49,12 +49,13 @@ export class SearchPicker extends Component {
 										<em>Shortest path is guarenteed!</em>
 									</Tab.Pane>
 									<Tab.Pane eventKey="#dijkstra">
-										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
-										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
+										Dijikstra's algorithm is a greedy algorithm for finding the shortest path between two nodes.
 									</Tab.Pane>
 									<Tab.Pane eventKey="#astar">
-										Possimus incidunt saepe adipisci quae fuga expedita dicta nobis modi
-										consectetur, recusandae, eos iste in iure ipsum, laboriosam libero officiis!
+									A* algorithm introduces a heuristic into a regular graph-searching algorithm,
+									 essentially planning ahead at each step so a more optimal decision is made.
+									 <br />
+									 <em> It is very popular in video games and web-based maps.</em>
 									</Tab.Pane>
 								</Tab.Content>
 							</Col>
