@@ -24,7 +24,7 @@ export class Pathfinder extends Component {
 			isMouseDown: false,
 			mode: 'draw',
 			algorithm: 'bfs',
-			maze: 'draw',
+			maze: 'recursiveDivision',
 			buttonDisable: false,
 			clearedScreen: true
 		};

@@ -8,7 +8,7 @@ export class MazePicker extends Component {
 			<div>
 				<FormGroup>
 					<Card.Title style={{ textAlign: 'left' }}>Now, Select a Maze</Card.Title>
-					<Tab.Container id="list-group-tabs-example" defaultActiveKey="#draw">
+					<Tab.Container id="list-group-tabs-example" defaultActiveKey="#recursiveDivision">
 						<Row>
 							<Col sm={4}>
 								<ListGroup>

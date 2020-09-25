@@ -3,7 +3,7 @@ export const simpleTerrain = (nodes, endX, endY) => {
 	let drawnNodes2 = [];
 	nodes.forEach((row) => {
 		row.forEach((node) => {
-			if (Math.floor(Math.random() * 100 + 1) < 33 && node.type !== 'start' && node.type !== 'end') {
+			if (Math.floor(Math.random() * 100 + 1) < 27 && node.type !== 'start' && node.type !== 'end') {
 				node.type = 'wall';
 				drawnNodes2.push(node);
 			}
