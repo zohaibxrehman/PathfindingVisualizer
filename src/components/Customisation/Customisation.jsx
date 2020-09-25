@@ -8,7 +8,7 @@ export class Customisation extends Component {
 		const { visualize, reset, changeAlgorithm, changeMaze, buttonDisable, clearedScreen } = this.props;
 		return (
 			<Form>
-				<Card bg="light" text="dark" style={{ height: '815px' }}>
+				<Card bg="light" text="dark" style={{ height: '1025px' }}>
 					<Card.Header as="h5">Customization</Card.Header>
 					<Card.Body>
 						<SearchPicker changeAlgorithm={(newAlg) => changeAlgorithm(newAlg)} />

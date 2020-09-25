@@ -8,13 +8,13 @@ import { SearchFacade } from '../path_algorithms/SearchFacade';
 
 import { Row, Col } from 'react-bootstrap';
 
-const TOTAL_ROWS = 27;
-const TOTAL_COLS = 45;
+const TOTAL_ROWS = 35;
+const TOTAL_COLS = 53;
 
-const START_NODE_ROW = 12;
+const START_NODE_ROW = 16;
 const START_NODE_COL = 8;
-const END_NODE_ROW = 12;
-const END_NODE_COL = 35;
+const END_NODE_ROW = 16;
+const END_NODE_COL = 43;
 
 export class Pathfinder extends Component {
 	constructor() {
