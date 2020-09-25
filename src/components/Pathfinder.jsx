@@ -153,7 +153,7 @@ export class Pathfinder extends Component {
 	}
 
 	render() {
-		const { nodes, isMouseDown, buttonDisable } = this.state;
+		const { nodes, isMouseDown, buttonDisable, clearedScreen } = this.state;
 		return (
 			<div onMouseUp={() => this.handleMouseUp()}>
 				<NavBar />
@@ -173,6 +173,7 @@ export class Pathfinder extends Component {
 							reset={() => this.reset()}
 							changeAlgorithm={(newAlg) => this.changeAlgorithm(newAlg)}
 							changeMaze={(newMaze) => this.changeMaze(newMaze)}
+							clearedScreen={clearedScreen}
 						/>
 					</Col>
 				</Row>
